@@ -59,6 +59,8 @@ class JSMin {
   protected $inputIndex  = 0;
   protected $inputLength = 0;
   protected $lookAhead   = null;
+  protected $x           = null;
+  protected $y           = null;
   protected $output      = '';
 
   // -- Public Static Methods --------------------------------------------------
@@ -111,6 +113,9 @@ class JSMin {
     switch($command) {
       case self::ACTION_KEEP_A:
         $this->output .= $this->a;
+        if ($this->a === $this->b && ($this->a == '+' || $this->a == '-') && $this->y !== $this->a) {
+            $this->output .= ' ';
+        }
 
       case self::ACTION_DELETE_A:
         $this->a = $this->b;
@@ -198,6 +203,8 @@ class JSMin {
       if ($this->inputIndex < $this->inputLength) {
         $c = substr($this->input, $this->inputIndex, 1);
         $this->inputIndex += 1;
+        $this->y = $this->x;
+        $this->x = $c;
       } else {
         $c = null;
       }
@@ -237,7 +244,7 @@ class JSMin {
         $this->get();
         $this->get();
         $this->get();
-    } 
+    }
 
     $this->a = "\n";
     $this->action(self::ACTION_DELETE_A_B);
