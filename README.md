@@ -1,4 +1,6 @@
-"""PHP port of Douglas Crockford's JSMin JavaScript minifier."""
+PHP port of Douglas Crockford's JSMin JavaScript minifier.
+========
+
 """This port was started by @rgrove on github, but was abandoned."""
 """This repo is being mantained by me @eriknyk now."""
 
@@ -6,17 +8,10 @@ Thanks to:
 
 """ Douglas Crockford """
 """ Ryan Grove """
+""" Adam Goforth """
 """ Erik Amaru Ortiz """
 
---- original readme file from @Douglas Crockford C project on github (https://github.com/douglascrockford/JSMin) ---
-
 JSMIN, The JavaScript Minifier
-
-
-Douglas Crockford
-douglas@crockford.com
-
-2012-07-02
 
 JSMin is a filter which removes comments and unnecessary whitespace from
 JavaScript files. It typically reduces filesize by half, resulting in faster
@@ -58,58 +53,61 @@ JSMin knows to not modify quoted strings and regular expression literals.
 JSMin does not obfuscate, but it does uglify.
 
 Before:
+---
+    // is.js
 
-// is.js
-
-// (c) 2001 Douglas Crockford
-// 2001 June 3
+    // (c) 2001 Douglas Crockford
+    // 2001 June 3
 
 
-// is
+    // is
 
-// The -is- object is used to identify the browser.  Every browser edition
-// identifies itself, but there is no standard way of doing it, and some of
-// the identification is deceptive. This is because the authors of web
-// browsers are liars. For example, Microsoft's IE browsers claim to be
-// Mozilla 4. Netscape 6 claims to be version 5.
+    // The -is- object is used to identify the browser.  Every browser edition
+    // identifies itself, but there is no standard way of doing it, and some of
+    // the identification is deceptive. This is because the authors of web
+    // browsers are liars. For example, Microsoft's IE browsers claim to be
+    // Mozilla 4. Netscape 6 claims to be version 5.
 
-// Warning: Do not use this awful, awful code.
+    // Warning: Do not use this awful, awful code.
 
-var is = {
-    ie:      navigator.appName == 'Microsoft Internet Explorer',
-    java:    navigator.javaEnabled(),
-    ns:      navigator.appName == 'Netscape',
-    ua:      navigator.userAgent.toLowerCase(),
-    version: parseFloat(navigator.appVersion.substr(21)) ||
-             parseFloat(navigator.appVersion),
-    win:     navigator.platform == 'Win32'
-}
+    var is = {
+        ie:      navigator.appName == 'Microsoft Internet Explorer',
+        java:    navigator.javaEnabled(),
+        ns:      navigator.appName == 'Netscape',
+        ua:      navigator.userAgent.toLowerCase(),
+        version: parseFloat(navigator.appVersion.substr(21)) ||
+                 parseFloat(navigator.appVersion),
+        win:     navigator.platform == 'Win32'
+    }
 
-is.mac = is.ua.indexOf('mac') >= 0;
+    is.mac = is.ua.indexOf('mac') >= 0;
 
-if (is.ua.indexOf('opera') >= 0) {
-    is.ie = is.ns = false;
-    is.opera = true;
-}
+    if (is.ua.indexOf('opera') >= 0) {
+        is.ie = is.ns = false;
+        is.opera = true;
+    }
 
-if (is.ua.indexOf('gecko') >= 0) {
-    is.ie = is.ns = false;
-    is.gecko = true;
-}
+    if (is.ua.indexOf('gecko') >= 0) {
+        is.ie = is.ns = false;
+        is.gecko = true;
+    }
 
 After:
+---
 
-var is={ie:navigator.appName=='Microsoft Internet Explorer',java:navigator.javaEnabled(),ns:navigator.appName=='Netscape',ua:navigator.userAgent.toLowerCase(),version:parseFloat(navigator.appVersion.substr(21))||parseFloat(navigator.appVersion),win:navigator.platform=='Win32'}
-is.mac=is.ua.indexOf('mac')>=0;if(is.ua.indexOf('opera')>=0){is.ie=is.ns=false;is.opera=true;}
-if(is.ua.indexOf('gecko')>=0){is.ie=is.ns=false;is.gecko=true;}
+    var is={ie:navigator.appName=='Microsoft Internet Explorer',java:navigator.javaEnabled(),ns:navigator.appName=='Netscape',ua:navigator.userAgent.toLowerCase(),version:parseFloat(navigator.appVersion.substr(21))||parseFloat(navigator.appVersion),win:navigator.platform=='Win32'}
+    is.mac=is.ua.indexOf('mac')>=0;if(is.ua.indexOf('opera')>=0){is.ie=is.ns=false;is.opera=true;}
+    if(is.ua.indexOf('gecko')>=0){is.ie=is.ns=false;is.gecko=true;}
 
 Character Set
+======
 
 JSMin requires, but does not verify, that the character set encoding of the
 input program is either ASCII or UTF-8. It might not work correctly with other
 encodings.
 
 Caution
+======
 
 Be sure to retain your original source file. JSMin is a one-way trip: Once done,
 it cannot be undone.
@@ -118,18 +116,10 @@ Do not put raw control characters inside a quoted string. That is an extremely
 bad practice. Use \x<i>hh</i> notation instead. JSMin will replace control
 characters with spaces or linefeeds.
 
-Command Line Options
-
-Optional parameters will be listed at the beginning of the output as comments.
-This is a convenient way of replacing copyright messages and other documentation.
-
-Example:
-
-  jsmin <fulljslint.js >jslint.js "(c)2002 Douglas Crockford"
-
 Errors
+======
 
-JSMin can produce three error messages to stderr:
+JSMin can produce three error messages to:
 
 Unterminated comment.
 Unterminated string constant.
@@ -137,5 +127,3 @@ Unterminated regular expression.
 
 It ignores all other errors that may be present in your source program.
 Use of JSLint is strongly recommended.
-
-Copyright 2001 Douglas Crockford. All Rights Reserved Wrrrldwide.
