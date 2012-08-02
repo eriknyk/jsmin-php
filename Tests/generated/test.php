@@ -18,6 +18,9 @@ foreach ($libs as $lib) {
     $jsmin_c   = shell_exec(__DIR__ . "/jsmin < libs/$lib.js");
     $jsmin_php = JSMin::minify(file_get_contents(__DIR__ . "/libs/$lib.js"));
 
+    file_put_contents("$lib.min-c.js", $jsmin_c);
+    file_put_contents("$lib.min-php.js", $jsmin_php);
+
     if ($jsmin_c === $jsmin_php) {
         echo "[PASS]\n";
     } else {

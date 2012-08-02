@@ -6,10 +6,11 @@ PHP port of Douglas Crockford's JSMin JavaScript minifier.
 
 Thanks to:
 
-""" Douglas Crockford """
-""" Ryan Grove """
-""" Adam Goforth """
-""" Erik Amaru Ortiz """
+ * Ryan Grove <ryan@wonko.com> (Stater project)
+ * Douglas Crockford <douglas@crockford.com> (jsmin.c)
+ * Ryan Grove <ryan@wonko.com> (PHP port)
+ * Adam Goforth <aag@adamgoforth.com> (Updates)
+ * Erik Amaru Ortiz <aortiz.erik@gmail.com> (Mantainer)
 
 JSMIN, The JavaScript Minifier
 

@@ -1,0 +1,8 @@
+README
+
+This folder will be removed soon
+This is not functional now since original Crockford's JSMin. lib is not leaving
+important comments  like /*! some copiright notice .... */
+And thi PHP port was adapted and it supports that type comments, and has other
+fixes.
+
